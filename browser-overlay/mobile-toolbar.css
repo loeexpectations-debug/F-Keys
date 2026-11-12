@@ -1,0 +1,22 @@
+:host {
+  position: fixed !important;
+  inset: auto 6px 6px auto !important;
+  margin: 0 !important;
+  z-index: 2147483647;
+  max-width: 96vw;
+  border: 0;
+  border-radius: 9px;
+  padding: 5px;
+  background: #172332;
+  color: white;
+  font: 15px system-ui;
+}
+:host([data-top]) { top: 6px !important; bottom: auto !important; }
+header { display: flex; align-items: center; gap: 3px; }
+strong { margin-right: auto; }
+button { min-height: 42px; font: inherit; touch-action: manipulation; }
+.keys { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; }
+.enter { grid-column: span 6; background: #acf2df; }
+.launcher, :host([data-folded]) section { display: none; }
+:host([data-folded]) .launcher { display: block; }
+output { display: block; max-width: 18em; }

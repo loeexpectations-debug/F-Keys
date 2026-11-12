@@ -48,6 +48,8 @@ try {
   `);
 
   const address = fs.readFileSync(path.join(temp, "F-Keys-Bookmark.txt"), "utf8").trim();
+  assert.ok(address.length <= 4900, "Bookmark must fit in a single-line Android editor");
+  assert.ok(address.endsWith("/*FK*/"), "Bookmark must have a visible end marker");
   const imported = fs.readFileSync(path.join(temp, "F-Keys-Import.html"), "utf8");
   const bookmark = imported.match(/<A HREF="([^"]+)">F Keys Pad<\/A>/);
   assert.ok(bookmark);

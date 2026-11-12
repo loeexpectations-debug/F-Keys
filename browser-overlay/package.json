@@ -1,0 +1,8 @@
+{
+  "name": "f-keys-browser-toolbar",
+  "version": "1.1.1",
+  "private": true,
+  "devDependencies": {
+    "terser": "5.44.1"
+  }
+}

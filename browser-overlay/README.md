@@ -19,6 +19,8 @@ Show F1 through F12 and Enter on the page you are using. On a phone the pad star
 
 If you use desktop Chrome with bookmarks synced to your phone, open Bookmark Manager on the computer. In its menu choose **Import bookmarks** and select F-Keys-Import.html. This adds the same F Keys Pad bookmark. On your phone, start at step 3.
 
+The mobile bookmark ends in `/*FK*/`. If that ending is missing after saving, replace the bookmark address.
+
 F-Keys-Mobile.html includes a local toolbar test with no text boxes. It displays the name of each key received by the page.
 
 ## What the keys do
@@ -29,4 +31,4 @@ Browser commands such as opening DevTools are outside the scope of the overlay. 
 
 ## Build
 
-From this directory run `python3 build.py dist`. The desktop extension also loads directly from the extension directory. The browser and bookmark versions share overlay.js and have no external dependencies.
+From this directory run `npm ci`, then `python3 build.py dist`. The desktop extension also loads directly from the extension directory. The browser and bookmark versions share overlay.js and do not load external code at runtime.

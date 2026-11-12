@@ -1,5 +1,6 @@
 """Build the unpacked-extension ZIP and the offline mobile setup page."""
 import argparse
+import subprocess
 from html import escape
 from pathlib import Path
 from urllib.parse import quote
@@ -11,15 +12,15 @@ parser.add_argument("output", type=Path)
 output = parser.parse_args().output.resolve()
 output.mkdir(parents=True, exist_ok=True)
 
-# overlay.js uses whole-line comments and explicit semicolons. Keep spaces between
-# lines, including CSS rules in template literals, when making a single-line URL.
-overlay = (source / "extension/overlay.js").read_text(encoding="utf-8")
-lines = overlay.splitlines()
-script = " ".join(line.strip() for line in lines if not line.lstrip().startswith("//"))
-address = "javascript:" + quote(script, safe="()[]{}:;,=+-*/!.'")
+mobile = subprocess.run(
+    ["node", str(source / "minify-bookmark.cjs")], capture_output=True, text=True, check=True
+).stdout
+address = "javascript:" + quote(mobile, safe="()[]{}:;,=+-*/!.'$&?@~") + "/*FK*/"
+if len(address) > 4900:
+    raise ValueError(f"Mobile bookmark exceeds the 4900-character budget: {len(address)}")
 template = (source / "mobile-template.html").read_text(encoding="utf-8")
 (output / "F-Keys-Mobile.html").write_text(
-    template.replace("{{CODE}}", escape(address, quote=True)).replace("{{RUN_TOOLBAR}}", overlay),
+    template.replace("{{CODE}}", escape(address, quote=True)).replace("{{RUN_TOOLBAR}}", mobile),
     encoding="utf-8"
 )
 (output / "F-Keys-Bookmark.txt").write_text(address + "\n", encoding="utf-8")
