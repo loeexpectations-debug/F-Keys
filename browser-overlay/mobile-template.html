@@ -19,7 +19,7 @@
 <main>
 <h1>F Keys</h1>
 <p>Add a floating keypad with F1–F12 and Enter to your webpage in Chrome.</p>
-<h2>Set up the bookmark</h2>
+<h2>Set up once on your phone</h2>
 <ol>
 <li>Tap <b>Copy bookmark address</b> below.</li>
 <li>In Chrome, bookmark any regular webpage. Edit that bookmark and name it <b>F Keys Pad</b>.</li>
@@ -30,9 +30,9 @@
 <button id="copy" type="button">Copy bookmark address</button>
 <p class="result" id="copy-status" role="status"></p>
 <h2>Use it on your webpage</h2>
-<p>Open your webpage. Type <b>F Keys Pad</b> in Chrome’s address bar and tap the matching bookmark suggestion. Tap the field you want to use, then tap a key. Launch the bookmark again after a full page load.</p>
-<h2>Try the keys here</h2>
-<a id="demo" href="{{CODE}}">Open test keypad</a>
+<p>Open your webpage. Type <b>F Keys Pad</b> in Chrome’s address bar and tap the matching bookmark suggestion. Once the toolbar appears, tap an F-key or Enter. For an embedded terminal, tap the terminal area once to direct the keys there. Minimize folds the toolbar into a small F Keys tab. Launch the bookmark again after a full page load.</p>
+<h2>Try a screen without a text box</h2>
+<button type="button" id="demo">Open toolbar test</button>
 <p class="result" id="result" role="status">Tap a key to see which one this page received.</p>
 </main>
 <script>
@@ -49,7 +49,22 @@
     }
     document.querySelector("#copy-status").textContent = copied ? "Copied. You can now edit your bookmark." : "The address is selected. Use your device’s Copy command.";
   };
+  const result = document.querySelector("#result");
+  let testing = false;
+  document.querySelector("#demo").addEventListener("click", () => {
+    testing = true;
+    const main = document.querySelector("main");
+    const heading = document.createElement("h1");
+    heading.textContent = "Toolbar test";
+    const info = document.createElement("p");
+    info.textContent = "Tap an F-key or Enter. The page shows each key it receives. Reload to return to setup.";
+    main.replaceChildren(heading, info, result);
+    main.style.paddingTop = "220px";
+    window.scrollTo(0, 0);
+    {{RUN_TOOLBAR}}
+  });
   document.addEventListener("keydown", event => {
+    if (!testing) return;
     if (!/^(F([1-9]|1[0-2])|Enter)$/.test(event.key)) return;
     if (event.isTrusted && event.target.closest?.("a,button")) return;
     event.preventDefault();

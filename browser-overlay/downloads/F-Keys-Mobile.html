@@ -19,20 +19,20 @@
 <main>
 <h1>F Keys</h1>
 <p>Add a floating keypad with F1–F12 and Enter to your webpage in Chrome.</p>
-<h2>Set up the bookmark</h2>
+<h2>Set up once on your phone</h2>
 <ol>
 <li>Tap <b>Copy bookmark address</b> below.</li>
 <li>In Chrome, bookmark any regular webpage. Edit that bookmark and name it <b>F Keys Pad</b>.</li>
 <li>Replace its entire address with what you copied, then save it.</li>
 </ol>
 <label for="code">Bookmark address</label>
-<textarea id="code" readonly spellcheck="false">javascript:(()%20=%3E%20{%20%22use%20strict%22;%20const%20id%20=%20%22f-keys-overlay-5cc9%22;%20const%20previous%20=%20document.getElementById(id);%20if%20(previous)%20{%20previous.dispatchEvent(new%20Event(%22f-keys-close%22));%20return;%20}%20%20const%20host%20=%20document.createElement(%22div%22);%20host.id%20=%20id;%20const%20root%20=%20host.attachShadow({%20mode:%20%22open%22%20});%20const%20panel%20=%20document.createElement(%22section%22);%20panel.setAttribute(%22aria-label%22,%20%22F%20Keys%20keypad%22);%20const%20header%20=%20document.createElement(%22header%22);%20const%20title%20=%20document.createElement(%22strong%22);%20title.textContent%20=%20%22F%20Keys%22;%20const%20keys%20=%20document.createElement(%22div%22);%20keys.className%20=%20%22keys%22;%20const%20status%20=%20document.createElement(%22output%22);%20status.setAttribute(%22aria-live%22,%20%22polite%22);%20header.append(title);%20panel.append(header,%20keys,%20status);%20root.append(panel);%20%20const%20sheet%20=%20new%20CSSStyleSheet();%20sheet.replaceSync(%60%20:host%20{%20all:%20initial%20!important;%20position:fixed%20!important;%20z-index:2147483647%20!important;%20inset:auto%20!important;%20left:50%25%20!important;%20transform:translateX(-50%25)%20!important;%20bottom:max(8px,env(safe-area-inset-bottom))%20!important;%20width:max-content%20!important;%20max-width:calc(100%25%20-%2016px)%20!important;%20padding:0%20!important;%20margin:0%20!important;%20background:transparent%20!important;%20border:0%20!important;%20color-scheme:dark;%20}%20:host([data-top])%20{%20top:max(8px,env(safe-area-inset-top))%20!important;%20bottom:auto%20!important;%20}%20section%20{%20box-sizing:border-box;%20padding:8px;%20border:1px%20solid%20%2342566b;%20border-radius:14px;%20background:%23172332;%20color:%23fff;%20box-shadow:0%206px%2024px%20%2308122055;%20font:500%2015px/1.2%20system-ui,sans-serif;%20direction:ltr;%20text-align:left;%20}%20header%20{%20display:flex;%20gap:4px;%20align-items:center;%20margin-bottom:5px;%20}%20strong%20{%20margin-right:auto;%20padding-left:6px;%20font-size:15px;%20}%20button%20{%20box-sizing:border-box;%20min-width:0;%20min-height:44px;%20cursor:pointer;%20touch-action:manipulation;%20border:1px%20solid%20%234b6076;%20border-bottom-width:2px;%20border-radius:7px;%20background:%232d4054;%20color:%23fff;%20font:600%2015px/1%20system-ui,sans-serif;%20}%20header%20button%20{%20padding:0%2010px;%20min-height:32px;%20font:500%2013px/1%20system-ui,sans-serif;%20border:0;%20background:transparent;%20color:%23c7d9eb;%20}%20.keys%20{%20display:grid;%20grid-template-columns:repeat(12,44px)%2076px;%20gap:4px;%20}%20.enter%20{%20background:%239eead8;%20border-color:%236bb6a7;%20color:%23102e2a;%20}%20button:active%20{%20filter:brightness(1.3);%20}%20button:focus-visible%20{%20outline:2px%20solid%20white;%20outline-offset:1px;%20}%20output%20{%20display:block;%20max-width:32em;%20font:500%2013px/1.35%20system-ui,sans-serif;%20margin:6px%204px%200;%20}%20output:empty%20{%20display:none;%20}%20%40media(max-width:710px)%20{%20.keys%20{%20grid-template-columns:repeat(6,minmax(0,1fr));%20}%20section%20{%20width:min(342px,calc(100vw%20-%2018px));%20}%20.enter%20{%20grid-column:1%20/%20-1;%20}%20}%20%40media(max-height:400px)%20and%20(min-width:430px)%20{%20.keys%20{%20grid-template-columns:repeat(7,minmax(0,1fr));%20}%20section%20{%20width:min(480px,calc(100vw%20-%2018px));%20}%20.enter%20{%20grid-column:span%202;%20}%20}%20%60);%20root.adoptedStyleSheets%20=%20[sheet];%20%20function%20button(label,%20parent,%20onClick)%20{%20const%20control%20=%20document.createElement(%22button%22);%20control.type%20=%20%22button%22;%20control.textContent%20=%20label;%20control.addEventListener(%22click%22,%20onClick);%20parent.append(control);%20return%20control;%20}%20%20const%20move%20=%20button(%22Move%20to%20top%22,%20header,%20()%20=%3E%20{%20host.toggleAttribute(%22data-top%22);%20updateMoveLabel();%20});%20function%20updateMoveLabel()%20{%20move.textContent%20=%20host.hasAttribute(%22data-top%22)%20%3F%20%22Move%20to%20bottom%22%20:%20%22Move%20to%20top%22;%20}%20host.toggleAttribute(%22data-top%22,%20matchMedia(%22(max-width:710px)%22).matches);%20updateMoveLabel();%20%20function%20pageTarget()%20{%20let%20node%20=%20document.activeElement%20%7C%7C%20document.body;%20while%20(node)%20{%20if%20(node%20===%20host)%20return%20lastTarget%3F.isConnected%20%3F%20lastTarget%20:%20document.body;%20if%20(node.localName%20===%20%22iframe%22%20%7C%7C%20node.localName%20===%20%22frame%22)%20{%20if%20(!node.contentDocument)%20return%20null;%20node%20=%20node.contentDocument.activeElement%20%7C%7C%20node.contentDocument.body;%20}%20else%20if%20(node.shadowRoot%3F.activeElement)%20{%20node%20=%20node.shadowRoot.activeElement;%20}%20else%20{%20return%20node;%20}%20}%20return%20null;%20}%20let%20lastTarget%20=%20null;%20lastTarget%20=%20pageTarget();%20function%20rememberFocus(event)%20{%20if%20(event.target%20!==%20host)%20lastTarget%20=%20pageTarget();%20}%20document.addEventListener(%22focusin%22,%20rememberFocus,%20true);%20function%20close()%20{%20document.removeEventListener(%22focusin%22,%20rememberFocus,%20true);%20host.remove();%20}%20host.addEventListener(%22f-keys-close%22,%20close,%20{%20once:%20true%20});%20button(%22Close%22,%20header,%20close);%20%20for%20(const%20type%20of%20[%22pointerdown%22,%20%22mousedown%22])%20{%20root.addEventListener(type,%20event%20=%3E%20{%20event.preventDefault();%20event.stopPropagation();%20});%20}%20for%20(const%20type%20of%20[%22click%22,%20%22keydown%22,%20%22keyup%22,%20%22keypress%22])%20{%20root.addEventListener(type,%20event%20=%3E%20event.stopPropagation());%20}%20%20const%20blockingInputTypes%20=%20new%20Set([%20%22text%22,%20%22search%22,%20%22url%22,%20%22tel%22,%20%22email%22,%20%22password%22,%20%22date%22,%20%22month%22,%20%22week%22,%20%22time%22,%20%22datetime-local%22,%20%22number%22%20]);%20%20function%20enterDefault(target)%20{%20if%20(target.matches(%22a[href],button:not(:disabled),input:is([type=submit],[type=reset],[type=button],[type=image]):not(:disabled),summary%22))%20{%20target.click();%20return;%20}%20const%20doc%20=%20target.ownerDocument;%20if%20(target.isContentEditable%20%7C%7C%20(target.localName%20===%20%22textarea%22%20%26%26%20!target.readOnly%20%26%26%20!target.disabled))%20{%20target.focus({%20preventScroll:%20true%20});%20doc.execCommand(target.isContentEditable%20%3F%20%22insertParagraph%22%20:%20%22insertText%22,%20false,%20%22%5Cn%22);%20return;%20}%20const%20form%20=%20target.form;%20if%20(target.localName%20!==%20%22input%22%20%7C%7C%20!form%20%7C%7C%20!blockingInputTypes.has(target.type)%20%7C%7C%20target.disabled)%20return;%20const%20controls%20=%20target.getRootNode().querySelectorAll(%22button,input%22);%20const%20submitter%20=%20Array.from(controls).find(node%20=%3E%20node.form%20===%20form%20%26%26%20(node.type%20===%20%22submit%22%20%7C%7C%20node.type%20===%20%22image%22));%20if%20(submitter)%20{%20if%20(!submitter.matches(%22:disabled%22))%20submitter.click();%20}%20else%20{%20const%20blockers%20=%20Array.from(form.elements).filter(node%20=%3E%20node.localName%20===%20%22input%22%20%26%26%20blockingInputTypes.has(node.type));%20if%20(blockers.length%20===%201)%20form.requestSubmit();%20}%20}%20%20function%20sendKey(key,%20keyCode)%20{%20status.textContent%20=%20%22%22;%20const%20target%20=%20pageTarget();%20if%20(!target)%20{%20status.textContent%20=%20%22This%20embedded%20page%20is%20on%20a%20different%20site.%20Open%20it%20in%20its%20own%20tab%20to%20use%20F%20Keys.%22;%20return;%20}%20lastTarget%20=%20target;%20const%20doc%20=%20target.ownerDocument;%20const%20view%20=%20doc.defaultView;%20const%20fire%20=%20(type,%20node%20=%20target)%20=%3E%20node.dispatchEvent(new%20view.KeyboardEvent(type,%20{%20key,%20code:%20key,%20keyCode,%20which:%20keyCode,%20charCode:%20type%20===%20%22keypress%22%20%3F%2013%20:%200,%20bubbles:%20true,%20cancelable:%20true,%20composed:%20true,%20view%20}));%20if%20(key%20!==%20%22Enter%22)%20{%20fire(%22keydown%22);%20fire(%22keyup%22,%20pageTarget()%20%7C%7C%20target);%20return;%20}%20let%20acted%20=%20false;%20const%20markActed%20=%20()%20=%3E%20{%20acted%20=%20true;%20};%20const%20scope%20=%20target.getRootNode();%20for%20(const%20type%20of%20[%22click%22,%20%22submit%22,%20%22invalid%22])%20scope.addEventListener(type,%20markActed,%20true);%20try%20{%20if%20(fire(%22keydown%22)%20%26%26%20target.isConnected%20%26%26%20pageTarget()%20===%20target%20%26%26%20fire(%22keypress%22)%20%26%26%20!acted%20%26%26%20target.isConnected%20%26%26%20pageTarget()%20===%20target)%20{%20enterDefault(target);%20}%20}%20finally%20{%20for%20(const%20type%20of%20[%22click%22,%20%22submit%22,%20%22invalid%22])%20scope.removeEventListener(type,%20markActed,%20true);%20fire(%22keyup%22,%20pageTarget()%20%7C%7C%20target);%20}%20}%20%20for%20(let%20i%20=%201;%20i%20%3C=%2012;%20i++)%20{%20button(%22F%22%20+%20i,%20keys,%20()%20=%3E%20sendKey(%22F%22%20+%20i,%20111%20+%20i));%20}%20button(%22Enter%22,%20keys,%20()%20=%3E%20sendKey(%22Enter%22,%2013)).className%20=%20%22enter%22;%20if%20(%22showPopover%22%20in%20host)%20host.popover%20=%20%22manual%22;%20document.documentElement.append(host);%20if%20(host.popover)%20host.showPopover();%20})();</textarea>
+<textarea id="code" readonly spellcheck="false">javascript:(()%20=%3E%20{%20%22use%20strict%22;%20const%20id%20=%20%22f-keys-overlay-5cc9%22;%20const%20previous%20=%20document.getElementById(id);%20if%20(previous)%20{%20previous.dispatchEvent(new%20Event(%22f-keys-close%22));%20return;%20}%20%20const%20host%20=%20document.createElement(%22div%22);%20host.id%20=%20id;%20const%20root%20=%20host.attachShadow({%20mode:%20%22open%22%20});%20const%20panel%20=%20document.createElement(%22section%22);%20panel.setAttribute(%22aria-label%22,%20%22F%20Keys%20toolbar%22);%20const%20header%20=%20document.createElement(%22header%22);%20const%20title%20=%20document.createElement(%22strong%22);%20title.textContent%20=%20%22F%20Keys%22;%20const%20keys%20=%20document.createElement(%22div%22);%20keys.className%20=%20%22keys%22;%20const%20status%20=%20document.createElement(%22output%22);%20status.setAttribute(%22aria-live%22,%20%22polite%22);%20header.append(title);%20panel.append(header,%20keys,%20status);%20root.append(panel);%20%20const%20sheet%20=%20new%20CSSStyleSheet();%20sheet.replaceSync(%60%20:host%20{%20all:%20initial%20!important;%20position:fixed%20!important;%20z-index:2147483647%20!important;%20inset:auto%20!important;%20left:50%25%20!important;%20transform:translateX(-50%25)%20!important;%20bottom:max(8px,env(safe-area-inset-bottom))%20!important;%20width:max-content%20!important;%20max-width:calc(100%25%20-%2016px)%20!important;%20padding:0%20!important;%20margin:0%20!important;%20background:transparent%20!important;%20border:0%20!important;%20color-scheme:dark;%20}%20:host([data-top])%20{%20top:max(8px,env(safe-area-inset-top))%20!important;%20bottom:auto%20!important;%20}%20:host([data-folded])%20{%20left:auto%20!important;%20right:max(8px,env(safe-area-inset-right))%20!important;%20transform:none%20!important;%20}%20.launcher%20{%20display:none;%20min-height:44px;%20padding:0%2015px;%20background:%23172332;%20color:%23baf7e7;%20border-radius:18px;%20box-shadow:0%204px%2018px%20%2308122055;%20}%20:host([data-folded])%20.launcher%20{%20display:block;%20}%20:host([data-folded])%20section%20{%20display:none;%20}%20section%20{%20box-sizing:border-box;%20padding:8px;%20border:1px%20solid%20%2342566b;%20border-radius:14px;%20background:%23172332;%20color:%23fff;%20box-shadow:0%206px%2024px%20%2308122055;%20font:500%2015px/1.2%20system-ui,sans-serif;%20direction:ltr;%20text-align:left;%20}%20header%20{%20display:flex;%20gap:4px;%20align-items:center;%20margin-bottom:5px;%20}%20strong%20{%20margin-right:auto;%20padding-left:6px;%20font-size:15px;%20}%20button%20{%20box-sizing:border-box;%20min-width:0;%20min-height:44px;%20cursor:pointer;%20touch-action:manipulation;%20border:1px%20solid%20%234b6076;%20border-bottom-width:2px;%20border-radius:7px;%20background:%232d4054;%20color:%23fff;%20font:600%2015px/1%20system-ui,sans-serif;%20}%20header%20button%20{%20padding:0%2010px;%20min-height:32px;%20font:500%2013px/1%20system-ui,sans-serif;%20border:0;%20background:transparent;%20color:%23c7d9eb;%20}%20.keys%20{%20display:grid;%20grid-template-columns:repeat(12,44px)%2076px;%20gap:4px;%20}%20.enter%20{%20background:%239eead8;%20border-color:%236bb6a7;%20color:%23102e2a;%20}%20button:active%20{%20filter:brightness(1.3);%20}%20button:focus-visible%20{%20outline:2px%20solid%20white;%20outline-offset:1px;%20}%20output%20{%20display:block;%20max-width:32em;%20font:500%2013px/1.35%20system-ui,sans-serif;%20margin:6px%204px%200;%20}%20output:empty%20{%20display:none;%20}%20%40media(max-width:710px)%20{%20.keys%20{%20grid-template-columns:repeat(6,minmax(0,1fr));%20}%20section%20{%20width:min(342px,calc(100vw%20-%2018px));%20}%20.enter%20{%20grid-column:1%20/%20-1;%20}%20}%20%40media(max-height:400px)%20and%20(min-width:430px)%20{%20.keys%20{%20grid-template-columns:repeat(7,minmax(0,1fr));%20}%20section%20{%20width:min(480px,calc(100vw%20-%2018px));%20}%20.enter%20{%20grid-column:span%202;%20}%20}%20%60);%20root.adoptedStyleSheets%20=%20[sheet];%20%20function%20button(label,%20parent,%20onClick)%20{%20const%20control%20=%20document.createElement(%22button%22);%20control.type%20=%20%22button%22;%20control.textContent%20=%20label;%20control.addEventListener(%22click%22,%20onClick);%20parent.append(control);%20return%20control;%20}%20%20const%20move%20=%20button(%22Move%20to%20top%22,%20header,%20()%20=%3E%20{%20host.toggleAttribute(%22data-top%22);%20updateMoveLabel();%20});%20function%20updateMoveLabel()%20{%20move.textContent%20=%20host.hasAttribute(%22data-top%22)%20%3F%20%22Move%20to%20bottom%22%20:%20%22Move%20to%20top%22;%20}%20host.toggleAttribute(%22data-top%22,%20matchMedia(%22(max-width:710px)%22).matches);%20updateMoveLabel();%20%20function%20pageTarget()%20{%20let%20node%20=%20document.activeElement%20%7C%7C%20document.body;%20while%20(node)%20{%20if%20(node%20===%20host)%20return%20lastTarget%3F.isConnected%20%3F%20lastTarget%20:%20document.body;%20if%20(node.localName%20===%20%22iframe%22%20%7C%7C%20node.localName%20===%20%22frame%22)%20{%20if%20(!node.contentDocument)%20return%20null;%20node%20=%20node.contentDocument.activeElement%20%7C%7C%20node.contentDocument.body;%20}%20else%20if%20(node.shadowRoot%3F.activeElement)%20{%20node%20=%20node.shadowRoot.activeElement;%20}%20else%20{%20return%20node;%20}%20}%20return%20null;%20}%20let%20lastTarget%20=%20null;%20lastTarget%20=%20pageTarget();%20function%20rememberFocus(event)%20{%20if%20(event.target%20!==%20host)%20lastTarget%20=%20pageTarget();%20}%20document.addEventListener(%22focusin%22,%20rememberFocus,%20true);%20function%20close()%20{%20document.removeEventListener(%22focusin%22,%20rememberFocus,%20true);%20host.remove();%20}%20host.addEventListener(%22f-keys-close%22,%20close,%20{%20once:%20true%20});%20const%20launcher%20=%20button(%22F%20Keys%22,%20root,%20()%20=%3E%20setFolded(false));%20launcher.className%20=%20%22launcher%22;%20launcher.setAttribute(%22aria-label%22,%20%22Open%20F%20Keys%20toolbar%22);%20const%20fold%20=%20button(%22Minimize%22,%20header,%20()%20=%3E%20setFolded(true));%20function%20setFolded(folded)%20{%20const%20toolbarHadFocus%20=%20document.activeElement%20===%20host;%20host.toggleAttribute(%22data-folded%22,%20folded);%20if%20(toolbarHadFocus)%20(folded%20%3F%20launcher%20:%20fold).focus({%20preventScroll:%20true%20});%20}%20button(%22Close%22,%20header,%20close);%20%20for%20(const%20type%20of%20[%22pointerdown%22,%20%22mousedown%22])%20{%20root.addEventListener(type,%20event%20=%3E%20{%20event.preventDefault();%20event.stopPropagation();%20});%20}%20for%20(const%20type%20of%20[%22click%22,%20%22keydown%22,%20%22keyup%22,%20%22keypress%22])%20{%20root.addEventListener(type,%20event%20=%3E%20event.stopPropagation());%20}%20%20const%20blockingInputTypes%20=%20new%20Set([%20%22text%22,%20%22search%22,%20%22url%22,%20%22tel%22,%20%22email%22,%20%22password%22,%20%22date%22,%20%22month%22,%20%22week%22,%20%22time%22,%20%22datetime-local%22,%20%22number%22%20]);%20%20function%20enterDefault(target)%20{%20if%20(target.matches(%22a[href],button:not(:disabled),input:is([type=submit],[type=reset],[type=button],[type=image]):not(:disabled),summary%22))%20{%20target.click();%20return;%20}%20const%20doc%20=%20target.ownerDocument;%20if%20(target.isContentEditable%20%7C%7C%20(target.localName%20===%20%22textarea%22%20%26%26%20!target.readOnly%20%26%26%20!target.disabled))%20{%20target.focus({%20preventScroll:%20true%20});%20doc.execCommand(target.isContentEditable%20%3F%20%22insertParagraph%22%20:%20%22insertText%22,%20false,%20%22%5Cn%22);%20return;%20}%20const%20form%20=%20target.form;%20if%20(target.localName%20!==%20%22input%22%20%7C%7C%20!form%20%7C%7C%20!blockingInputTypes.has(target.type)%20%7C%7C%20target.disabled)%20return;%20const%20controls%20=%20target.getRootNode().querySelectorAll(%22button,input%22);%20const%20submitter%20=%20Array.from(controls).find(node%20=%3E%20node.form%20===%20form%20%26%26%20(node.type%20===%20%22submit%22%20%7C%7C%20node.type%20===%20%22image%22));%20if%20(submitter)%20{%20if%20(!submitter.matches(%22:disabled%22))%20submitter.click();%20}%20else%20{%20const%20blockers%20=%20Array.from(form.elements).filter(node%20=%3E%20node.localName%20===%20%22input%22%20%26%26%20blockingInputTypes.has(node.type));%20if%20(blockers.length%20===%201)%20form.requestSubmit();%20}%20}%20%20function%20sendKey(key,%20keyCode)%20{%20status.textContent%20=%20%22%22;%20const%20target%20=%20pageTarget();%20if%20(!target)%20{%20status.textContent%20=%20%22This%20embedded%20page%20is%20on%20a%20different%20site.%20Open%20it%20in%20its%20own%20tab%20to%20use%20F%20Keys.%22;%20return;%20}%20lastTarget%20=%20target;%20const%20doc%20=%20target.ownerDocument;%20const%20view%20=%20doc.defaultView;%20const%20fire%20=%20(type,%20node%20=%20target)%20=%3E%20node.dispatchEvent(new%20view.KeyboardEvent(type,%20{%20key,%20code:%20key,%20keyCode,%20which:%20keyCode,%20charCode:%20type%20===%20%22keypress%22%20%3F%2013%20:%200,%20bubbles:%20true,%20cancelable:%20true,%20composed:%20true,%20view%20}));%20if%20(key%20!==%20%22Enter%22)%20{%20fire(%22keydown%22);%20fire(%22keyup%22,%20pageTarget()%20%7C%7C%20target);%20return;%20}%20let%20acted%20=%20false;%20const%20markActed%20=%20()%20=%3E%20{%20acted%20=%20true;%20};%20const%20scope%20=%20target.getRootNode();%20for%20(const%20type%20of%20[%22click%22,%20%22submit%22,%20%22invalid%22])%20scope.addEventListener(type,%20markActed,%20true);%20try%20{%20if%20(fire(%22keydown%22)%20%26%26%20target.isConnected%20%26%26%20pageTarget()%20===%20target%20%26%26%20fire(%22keypress%22)%20%26%26%20!acted%20%26%26%20target.isConnected%20%26%26%20pageTarget()%20===%20target)%20{%20enterDefault(target);%20}%20}%20finally%20{%20for%20(const%20type%20of%20[%22click%22,%20%22submit%22,%20%22invalid%22])%20scope.removeEventListener(type,%20markActed,%20true);%20fire(%22keyup%22,%20pageTarget()%20%7C%7C%20target);%20}%20}%20%20for%20(let%20i%20=%201;%20i%20%3C=%2012;%20i++)%20{%20button(%22F%22%20+%20i,%20keys,%20()%20=%3E%20sendKey(%22F%22%20+%20i,%20111%20+%20i));%20}%20button(%22Enter%22,%20keys,%20()%20=%3E%20sendKey(%22Enter%22,%2013)).className%20=%20%22enter%22;%20if%20(%22showPopover%22%20in%20host)%20host.popover%20=%20%22manual%22;%20document.documentElement.append(host);%20if%20(host.popover)%20host.showPopover();%20})();</textarea>
 <button id="copy" type="button">Copy bookmark address</button>
 <p class="result" id="copy-status" role="status"></p>
 <h2>Use it on your webpage</h2>
-<p>Open your webpage. Type <b>F Keys Pad</b> in Chrome’s address bar and tap the matching bookmark suggestion. Tap the field you want to use, then tap a key. Launch the bookmark again after a full page load.</p>
-<h2>Try the keys here</h2>
-<a id="demo" href="javascript:(()%20=%3E%20{%20%22use%20strict%22;%20const%20id%20=%20%22f-keys-overlay-5cc9%22;%20const%20previous%20=%20document.getElementById(id);%20if%20(previous)%20{%20previous.dispatchEvent(new%20Event(%22f-keys-close%22));%20return;%20}%20%20const%20host%20=%20document.createElement(%22div%22);%20host.id%20=%20id;%20const%20root%20=%20host.attachShadow({%20mode:%20%22open%22%20});%20const%20panel%20=%20document.createElement(%22section%22);%20panel.setAttribute(%22aria-label%22,%20%22F%20Keys%20keypad%22);%20const%20header%20=%20document.createElement(%22header%22);%20const%20title%20=%20document.createElement(%22strong%22);%20title.textContent%20=%20%22F%20Keys%22;%20const%20keys%20=%20document.createElement(%22div%22);%20keys.className%20=%20%22keys%22;%20const%20status%20=%20document.createElement(%22output%22);%20status.setAttribute(%22aria-live%22,%20%22polite%22);%20header.append(title);%20panel.append(header,%20keys,%20status);%20root.append(panel);%20%20const%20sheet%20=%20new%20CSSStyleSheet();%20sheet.replaceSync(%60%20:host%20{%20all:%20initial%20!important;%20position:fixed%20!important;%20z-index:2147483647%20!important;%20inset:auto%20!important;%20left:50%25%20!important;%20transform:translateX(-50%25)%20!important;%20bottom:max(8px,env(safe-area-inset-bottom))%20!important;%20width:max-content%20!important;%20max-width:calc(100%25%20-%2016px)%20!important;%20padding:0%20!important;%20margin:0%20!important;%20background:transparent%20!important;%20border:0%20!important;%20color-scheme:dark;%20}%20:host([data-top])%20{%20top:max(8px,env(safe-area-inset-top))%20!important;%20bottom:auto%20!important;%20}%20section%20{%20box-sizing:border-box;%20padding:8px;%20border:1px%20solid%20%2342566b;%20border-radius:14px;%20background:%23172332;%20color:%23fff;%20box-shadow:0%206px%2024px%20%2308122055;%20font:500%2015px/1.2%20system-ui,sans-serif;%20direction:ltr;%20text-align:left;%20}%20header%20{%20display:flex;%20gap:4px;%20align-items:center;%20margin-bottom:5px;%20}%20strong%20{%20margin-right:auto;%20padding-left:6px;%20font-size:15px;%20}%20button%20{%20box-sizing:border-box;%20min-width:0;%20min-height:44px;%20cursor:pointer;%20touch-action:manipulation;%20border:1px%20solid%20%234b6076;%20border-bottom-width:2px;%20border-radius:7px;%20background:%232d4054;%20color:%23fff;%20font:600%2015px/1%20system-ui,sans-serif;%20}%20header%20button%20{%20padding:0%2010px;%20min-height:32px;%20font:500%2013px/1%20system-ui,sans-serif;%20border:0;%20background:transparent;%20color:%23c7d9eb;%20}%20.keys%20{%20display:grid;%20grid-template-columns:repeat(12,44px)%2076px;%20gap:4px;%20}%20.enter%20{%20background:%239eead8;%20border-color:%236bb6a7;%20color:%23102e2a;%20}%20button:active%20{%20filter:brightness(1.3);%20}%20button:focus-visible%20{%20outline:2px%20solid%20white;%20outline-offset:1px;%20}%20output%20{%20display:block;%20max-width:32em;%20font:500%2013px/1.35%20system-ui,sans-serif;%20margin:6px%204px%200;%20}%20output:empty%20{%20display:none;%20}%20%40media(max-width:710px)%20{%20.keys%20{%20grid-template-columns:repeat(6,minmax(0,1fr));%20}%20section%20{%20width:min(342px,calc(100vw%20-%2018px));%20}%20.enter%20{%20grid-column:1%20/%20-1;%20}%20}%20%40media(max-height:400px)%20and%20(min-width:430px)%20{%20.keys%20{%20grid-template-columns:repeat(7,minmax(0,1fr));%20}%20section%20{%20width:min(480px,calc(100vw%20-%2018px));%20}%20.enter%20{%20grid-column:span%202;%20}%20}%20%60);%20root.adoptedStyleSheets%20=%20[sheet];%20%20function%20button(label,%20parent,%20onClick)%20{%20const%20control%20=%20document.createElement(%22button%22);%20control.type%20=%20%22button%22;%20control.textContent%20=%20label;%20control.addEventListener(%22click%22,%20onClick);%20parent.append(control);%20return%20control;%20}%20%20const%20move%20=%20button(%22Move%20to%20top%22,%20header,%20()%20=%3E%20{%20host.toggleAttribute(%22data-top%22);%20updateMoveLabel();%20});%20function%20updateMoveLabel()%20{%20move.textContent%20=%20host.hasAttribute(%22data-top%22)%20%3F%20%22Move%20to%20bottom%22%20:%20%22Move%20to%20top%22;%20}%20host.toggleAttribute(%22data-top%22,%20matchMedia(%22(max-width:710px)%22).matches);%20updateMoveLabel();%20%20function%20pageTarget()%20{%20let%20node%20=%20document.activeElement%20%7C%7C%20document.body;%20while%20(node)%20{%20if%20(node%20===%20host)%20return%20lastTarget%3F.isConnected%20%3F%20lastTarget%20:%20document.body;%20if%20(node.localName%20===%20%22iframe%22%20%7C%7C%20node.localName%20===%20%22frame%22)%20{%20if%20(!node.contentDocument)%20return%20null;%20node%20=%20node.contentDocument.activeElement%20%7C%7C%20node.contentDocument.body;%20}%20else%20if%20(node.shadowRoot%3F.activeElement)%20{%20node%20=%20node.shadowRoot.activeElement;%20}%20else%20{%20return%20node;%20}%20}%20return%20null;%20}%20let%20lastTarget%20=%20null;%20lastTarget%20=%20pageTarget();%20function%20rememberFocus(event)%20{%20if%20(event.target%20!==%20host)%20lastTarget%20=%20pageTarget();%20}%20document.addEventListener(%22focusin%22,%20rememberFocus,%20true);%20function%20close()%20{%20document.removeEventListener(%22focusin%22,%20rememberFocus,%20true);%20host.remove();%20}%20host.addEventListener(%22f-keys-close%22,%20close,%20{%20once:%20true%20});%20button(%22Close%22,%20header,%20close);%20%20for%20(const%20type%20of%20[%22pointerdown%22,%20%22mousedown%22])%20{%20root.addEventListener(type,%20event%20=%3E%20{%20event.preventDefault();%20event.stopPropagation();%20});%20}%20for%20(const%20type%20of%20[%22click%22,%20%22keydown%22,%20%22keyup%22,%20%22keypress%22])%20{%20root.addEventListener(type,%20event%20=%3E%20event.stopPropagation());%20}%20%20const%20blockingInputTypes%20=%20new%20Set([%20%22text%22,%20%22search%22,%20%22url%22,%20%22tel%22,%20%22email%22,%20%22password%22,%20%22date%22,%20%22month%22,%20%22week%22,%20%22time%22,%20%22datetime-local%22,%20%22number%22%20]);%20%20function%20enterDefault(target)%20{%20if%20(target.matches(%22a[href],button:not(:disabled),input:is([type=submit],[type=reset],[type=button],[type=image]):not(:disabled),summary%22))%20{%20target.click();%20return;%20}%20const%20doc%20=%20target.ownerDocument;%20if%20(target.isContentEditable%20%7C%7C%20(target.localName%20===%20%22textarea%22%20%26%26%20!target.readOnly%20%26%26%20!target.disabled))%20{%20target.focus({%20preventScroll:%20true%20});%20doc.execCommand(target.isContentEditable%20%3F%20%22insertParagraph%22%20:%20%22insertText%22,%20false,%20%22%5Cn%22);%20return;%20}%20const%20form%20=%20target.form;%20if%20(target.localName%20!==%20%22input%22%20%7C%7C%20!form%20%7C%7C%20!blockingInputTypes.has(target.type)%20%7C%7C%20target.disabled)%20return;%20const%20controls%20=%20target.getRootNode().querySelectorAll(%22button,input%22);%20const%20submitter%20=%20Array.from(controls).find(node%20=%3E%20node.form%20===%20form%20%26%26%20(node.type%20===%20%22submit%22%20%7C%7C%20node.type%20===%20%22image%22));%20if%20(submitter)%20{%20if%20(!submitter.matches(%22:disabled%22))%20submitter.click();%20}%20else%20{%20const%20blockers%20=%20Array.from(form.elements).filter(node%20=%3E%20node.localName%20===%20%22input%22%20%26%26%20blockingInputTypes.has(node.type));%20if%20(blockers.length%20===%201)%20form.requestSubmit();%20}%20}%20%20function%20sendKey(key,%20keyCode)%20{%20status.textContent%20=%20%22%22;%20const%20target%20=%20pageTarget();%20if%20(!target)%20{%20status.textContent%20=%20%22This%20embedded%20page%20is%20on%20a%20different%20site.%20Open%20it%20in%20its%20own%20tab%20to%20use%20F%20Keys.%22;%20return;%20}%20lastTarget%20=%20target;%20const%20doc%20=%20target.ownerDocument;%20const%20view%20=%20doc.defaultView;%20const%20fire%20=%20(type,%20node%20=%20target)%20=%3E%20node.dispatchEvent(new%20view.KeyboardEvent(type,%20{%20key,%20code:%20key,%20keyCode,%20which:%20keyCode,%20charCode:%20type%20===%20%22keypress%22%20%3F%2013%20:%200,%20bubbles:%20true,%20cancelable:%20true,%20composed:%20true,%20view%20}));%20if%20(key%20!==%20%22Enter%22)%20{%20fire(%22keydown%22);%20fire(%22keyup%22,%20pageTarget()%20%7C%7C%20target);%20return;%20}%20let%20acted%20=%20false;%20const%20markActed%20=%20()%20=%3E%20{%20acted%20=%20true;%20};%20const%20scope%20=%20target.getRootNode();%20for%20(const%20type%20of%20[%22click%22,%20%22submit%22,%20%22invalid%22])%20scope.addEventListener(type,%20markActed,%20true);%20try%20{%20if%20(fire(%22keydown%22)%20%26%26%20target.isConnected%20%26%26%20pageTarget()%20===%20target%20%26%26%20fire(%22keypress%22)%20%26%26%20!acted%20%26%26%20target.isConnected%20%26%26%20pageTarget()%20===%20target)%20{%20enterDefault(target);%20}%20}%20finally%20{%20for%20(const%20type%20of%20[%22click%22,%20%22submit%22,%20%22invalid%22])%20scope.removeEventListener(type,%20markActed,%20true);%20fire(%22keyup%22,%20pageTarget()%20%7C%7C%20target);%20}%20}%20%20for%20(let%20i%20=%201;%20i%20%3C=%2012;%20i++)%20{%20button(%22F%22%20+%20i,%20keys,%20()%20=%3E%20sendKey(%22F%22%20+%20i,%20111%20+%20i));%20}%20button(%22Enter%22,%20keys,%20()%20=%3E%20sendKey(%22Enter%22,%2013)).className%20=%20%22enter%22;%20if%20(%22showPopover%22%20in%20host)%20host.popover%20=%20%22manual%22;%20document.documentElement.append(host);%20if%20(host.popover)%20host.showPopover();%20})();">Open test keypad</a>
+<p>Open your webpage. Type <b>F Keys Pad</b> in Chrome’s address bar and tap the matching bookmark suggestion. Once the toolbar appears, tap an F-key or Enter. For an embedded terminal, tap the terminal area once to direct the keys there. Minimize folds the toolbar into a small F Keys tab. Launch the bookmark again after a full page load.</p>
+<h2>Try a screen without a text box</h2>
+<button type="button" id="demo">Open toolbar test</button>
 <p class="result" id="result" role="status">Tap a key to see which one this page received.</p>
 </main>
 <script>
@@ -49,7 +49,233 @@
     }
     document.querySelector("#copy-status").textContent = copied ? "Copied. You can now edit your bookmark." : "The address is selected. Use your device’s Copy command.";
   };
+  const result = document.querySelector("#result");
+  let testing = false;
+  document.querySelector("#demo").addEventListener("click", () => {
+    testing = true;
+    const main = document.querySelector("main");
+    const heading = document.createElement("h1");
+    heading.textContent = "Toolbar test";
+    const info = document.createElement("p");
+    info.textContent = "Tap an F-key or Enter. The page shows each key it receives. Reload to return to setup.";
+    main.replaceChildren(heading, info, result);
+    main.style.paddingTop = "220px";
+    window.scrollTo(0, 0);
+    (() => {
+  "use strict";
+  const id = "f-keys-overlay-5cc9";
+  const previous = document.getElementById(id);
+  if (previous) {
+    previous.dispatchEvent(new Event("f-keys-close"));
+    return;
+  }
+
+  const host = document.createElement("div");
+  host.id = id;
+  const root = host.attachShadow({ mode: "open" });
+  const panel = document.createElement("section");
+  panel.setAttribute("aria-label", "F Keys toolbar");
+  const header = document.createElement("header");
+  const title = document.createElement("strong");
+  title.textContent = "F Keys";
+  const keys = document.createElement("div");
+  keys.className = "keys";
+  const status = document.createElement("output");
+  status.setAttribute("aria-live", "polite");
+  header.append(title);
+  panel.append(header, keys, status);
+  root.append(panel);
+
+  const sheet = new CSSStyleSheet();
+  sheet.replaceSync(`
+    :host { all: initial !important; position:fixed !important; z-index:2147483647 !important;
+      inset:auto !important; left:50% !important; transform:translateX(-50%) !important;
+      bottom:max(8px,env(safe-area-inset-bottom)) !important; width:max-content !important;
+      max-width:calc(100% - 16px) !important; padding:0 !important; margin:0 !important;
+      background:transparent !important; border:0 !important; color-scheme:dark; }
+    :host([data-top]) { top:max(8px,env(safe-area-inset-top)) !important; bottom:auto !important; }
+    :host([data-folded]) { left:auto !important; right:max(8px,env(safe-area-inset-right)) !important;
+      transform:none !important; }
+    .launcher { display:none; min-height:44px; padding:0 15px; background:#172332;
+      color:#baf7e7; border-radius:18px; box-shadow:0 4px 18px #08122055; }
+    :host([data-folded]) .launcher { display:block; }
+    :host([data-folded]) section { display:none; }
+    section { box-sizing:border-box; padding:8px; border:1px solid #42566b; border-radius:14px;
+      background:#172332; color:#fff; box-shadow:0 6px 24px #08122055;
+      font:500 15px/1.2 system-ui,sans-serif; direction:ltr; text-align:left; }
+    header { display:flex; gap:4px; align-items:center; margin-bottom:5px; }
+    strong { margin-right:auto; padding-left:6px; font-size:15px; }
+    button { box-sizing:border-box; min-width:0; min-height:44px; cursor:pointer; touch-action:manipulation;
+      border:1px solid #4b6076; border-bottom-width:2px; border-radius:7px; background:#2d4054;
+      color:#fff; font:600 15px/1 system-ui,sans-serif; }
+    header button { padding:0 10px; min-height:32px; font:500 13px/1 system-ui,sans-serif;
+      border:0; background:transparent; color:#c7d9eb; }
+    .keys { display:grid; grid-template-columns:repeat(12,44px) 76px; gap:4px; }
+    .enter { background:#9eead8; border-color:#6bb6a7; color:#102e2a; }
+    button:active { filter:brightness(1.3); }
+    button:focus-visible { outline:2px solid white; outline-offset:1px; }
+    output { display:block; max-width:32em; font:500 13px/1.35 system-ui,sans-serif; margin:6px 4px 0; }
+    output:empty { display:none; }
+    @media(max-width:710px) {
+      .keys { grid-template-columns:repeat(6,minmax(0,1fr)); }
+      section { width:min(342px,calc(100vw - 18px)); }
+      .enter { grid-column:1 / -1; }
+    }
+    @media(max-height:400px) and (min-width:430px) {
+      .keys { grid-template-columns:repeat(7,minmax(0,1fr)); }
+      section { width:min(480px,calc(100vw - 18px)); }
+      .enter { grid-column:span 2; }
+    }
+  `);
+  root.adoptedStyleSheets = [sheet];
+
+  function button(label, parent, onClick) {
+    const control = document.createElement("button");
+    control.type = "button";
+    control.textContent = label;
+    control.addEventListener("click", onClick);
+    parent.append(control);
+    return control;
+  }
+
+  const move = button("Move to top", header, () => {
+    host.toggleAttribute("data-top");
+    updateMoveLabel();
+  });
+  function updateMoveLabel() {
+    move.textContent = host.hasAttribute("data-top") ? "Move to bottom" : "Move to top";
+  }
+  host.toggleAttribute("data-top", matchMedia("(max-width:710px)").matches);
+  updateMoveLabel();
+
+  // Follow focus into ordinary frames and open shadow trees without crossing origins.
+  function pageTarget() {
+    let node = document.activeElement || document.body;
+    while (node) {
+      if (node === host) return lastTarget?.isConnected ? lastTarget : document.body;
+      if (node.localName === "iframe" || node.localName === "frame") {
+        if (!node.contentDocument) return null;
+        node = node.contentDocument.activeElement || node.contentDocument.body;
+      } else if (node.shadowRoot?.activeElement) {
+        node = node.shadowRoot.activeElement;
+      } else {
+        return node;
+      }
+    }
+    return null;
+  }
+  let lastTarget = null;
+  lastTarget = pageTarget();
+  function rememberFocus(event) {
+    if (event.target !== host) lastTarget = pageTarget();
+  }
+  document.addEventListener("focusin", rememberFocus, true);
+  function close() {
+    document.removeEventListener("focusin", rememberFocus, true);
+    host.remove();
+  }
+  host.addEventListener("f-keys-close", close, { once: true });
+  const launcher = button("F Keys", root, () => setFolded(false));
+  launcher.className = "launcher";
+  launcher.setAttribute("aria-label", "Open F Keys toolbar");
+  const fold = button("Minimize", header, () => setFolded(true));
+  function setFolded(folded) {
+    const toolbarHadFocus = document.activeElement === host;
+    host.toggleAttribute("data-folded", folded);
+    if (toolbarHadFocus) (folded ? launcher : fold).focus({ preventScroll: true });
+  }
+  button("Close", header, close);
+
+  // A pointer tap should preserve the site's focus, caret and selection.
+  for (const type of ["pointerdown", "mousedown"]) {
+    root.addEventListener(type, event => {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+  }
+  for (const type of ["click", "keydown", "keyup", "keypress"]) {
+    root.addEventListener(type, event => event.stopPropagation());
+  }
+
+  const blockingInputTypes = new Set([
+    "text", "search", "url", "tel", "email", "password", "date", "month",
+    "week", "time", "datetime-local", "number"
+  ]);
+
+  function enterDefault(target) {
+    if (target.matches("a[href],button:not(:disabled),input:is([type=submit],[type=reset],[type=button],[type=image]):not(:disabled),summary")) {
+      target.click();
+      return;
+    }
+    const doc = target.ownerDocument;
+    if (target.isContentEditable || (target.localName === "textarea" && !target.readOnly && !target.disabled)) {
+      target.focus({ preventScroll: true });
+      doc.execCommand(target.isContentEditable ? "insertParagraph" : "insertText", false, "\n");
+      return;
+    }
+    const form = target.form;
+    if (target.localName !== "input" || !form || !blockingInputTypes.has(target.type) || target.disabled) return;
+    // Include submit/image buttons associated via a form attribute outside the form.
+    const controls = target.getRootNode().querySelectorAll("button,input");
+    const submitter = Array.from(controls).find(node =>
+      node.form === form && (node.type === "submit" || node.type === "image"));
+    if (submitter) {
+      if (!submitter.matches(":disabled")) submitter.click();
+    } else {
+      const blockers = Array.from(form.elements).filter(node =>
+        node.localName === "input" && blockingInputTypes.has(node.type));
+      if (blockers.length === 1) form.requestSubmit();
+    }
+  }
+
+  function sendKey(key, keyCode) {
+    status.textContent = "";
+    const target = pageTarget();
+    if (!target) {
+      status.textContent = "This embedded page is on a different site. Open it in its own tab to use F Keys.";
+      return;
+    }
+    lastTarget = target;
+    const doc = target.ownerDocument;
+    const view = doc.defaultView;
+    const fire = (type, node = target) => node.dispatchEvent(new view.KeyboardEvent(type, {
+      key, code: key, keyCode, which: keyCode, charCode: type === "keypress" ? 13 : 0,
+      bubbles: true, cancelable: true, composed: true, view
+    }));
+    if (key !== "Enter") {
+      fire("keydown");
+      fire("keyup", pageTarget() || target);
+      return;
+    }
+    // Some pages implement their own Enter action. Respect cancellation and avoid
+    // repeating synchronous clicks/submissions a page already made during keydown.
+    let acted = false;
+    const markActed = () => { acted = true; };
+    const scope = target.getRootNode();
+    for (const type of ["click", "submit", "invalid"]) scope.addEventListener(type, markActed, true);
+    try {
+      if (fire("keydown") && target.isConnected && pageTarget() === target &&
+          fire("keypress") && !acted && target.isConnected && pageTarget() === target) {
+        enterDefault(target);
+      }
+    } finally {
+      for (const type of ["click", "submit", "invalid"]) scope.removeEventListener(type, markActed, true);
+      fire("keyup", pageTarget() || target);
+    }
+  }
+
+  for (let i = 1; i <= 12; i++) {
+    button("F" + i, keys, () => sendKey("F" + i, 111 + i));
+  }
+  button("Enter", keys, () => sendKey("Enter", 13)).className = "enter";
+  if ("showPopover" in host) host.popover = "manual";
+  document.documentElement.append(host);
+  if (host.popover) host.showPopover();
+})();
+
+  });
   document.addEventListener("keydown", event => {
+    if (!testing) return;
     if (!/^(F([1-9]|1[0-2])|Enter)$/.test(event.key)) return;
     if (event.isTrusted && event.target.closest?.("a,button")) return;
     event.preventDefault();

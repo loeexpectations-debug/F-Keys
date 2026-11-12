@@ -11,7 +11,7 @@
   host.id = id;
   const root = host.attachShadow({ mode: "open" });
   const panel = document.createElement("section");
-  panel.setAttribute("aria-label", "F Keys keypad");
+  panel.setAttribute("aria-label", "F Keys toolbar");
   const header = document.createElement("header");
   const title = document.createElement("strong");
   title.textContent = "F Keys";
@@ -31,6 +31,12 @@
       max-width:calc(100% - 16px) !important; padding:0 !important; margin:0 !important;
       background:transparent !important; border:0 !important; color-scheme:dark; }
     :host([data-top]) { top:max(8px,env(safe-area-inset-top)) !important; bottom:auto !important; }
+    :host([data-folded]) { left:auto !important; right:max(8px,env(safe-area-inset-right)) !important;
+      transform:none !important; }
+    .launcher { display:none; min-height:44px; padding:0 15px; background:#172332;
+      color:#baf7e7; border-radius:18px; box-shadow:0 4px 18px #08122055; }
+    :host([data-folded]) .launcher { display:block; }
+    :host([data-folded]) section { display:none; }
     section { box-sizing:border-box; padding:8px; border:1px solid #42566b; border-radius:14px;
       background:#172332; color:#fff; box-shadow:0 6px 24px #08122055;
       font:500 15px/1.2 system-ui,sans-serif; direction:ltr; text-align:left; }
@@ -106,6 +112,15 @@
     host.remove();
   }
   host.addEventListener("f-keys-close", close, { once: true });
+  const launcher = button("F Keys", root, () => setFolded(false));
+  launcher.className = "launcher";
+  launcher.setAttribute("aria-label", "Open F Keys toolbar");
+  const fold = button("Minimize", header, () => setFolded(true));
+  function setFolded(folded) {
+    const toolbarHadFocus = document.activeElement === host;
+    host.toggleAttribute("data-folded", folded);
+    if (toolbarHadFocus) (folded ? launcher : fold).focus({ preventScroll: true });
+  }
   button("Close", header, close);
 
   // A pointer tap should preserve the site's focus, caret and selection.

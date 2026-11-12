@@ -1,0 +1,15 @@
+name: Test Chrome toolbar
+on:
+  push:
+    branches: [chrome-keypad]
+    paths: ['browser-overlay/**', '.github/workflows/test-toolbar.yml']
+  pull_request:
+    paths: ['browser-overlay/**', '.github/workflows/test-toolbar.yml']
+permissions:
+  contents: read
+jobs:
+  no-field:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node browser-overlay/tests/no-field.mjs
